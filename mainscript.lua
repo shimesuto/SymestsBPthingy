@@ -552,23 +552,6 @@ local NoClipToggle = MiscTab:CreateToggle({
     end,
 })
 
--- Create the button under CosmeticTradingTab
-local CosmeticButton = CosmeticTradingTab:CreateButton({
-    Name = "Get Exclusive Animations",
-    Callback = function()
-        -- Invoke the server function
-        local success, message = pcall(function()
-            return game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(66, "Animations", "Exclusive")
-        end)
-
-        -- Check if the invocation was successful
-        if success then
-            print("Successfully invoked server for Exclusive Animations!")
-        else
-            print("Error invoking server: " .. message)
-        end
-    end,
-})
 
 -- Create a button for Exclusive Animations
 local ExclusiveButton = 
