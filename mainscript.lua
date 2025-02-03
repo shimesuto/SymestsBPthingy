@@ -1,8 +1,7 @@
 
 -- Symest's script thing uh yeah --
 -- with cool comments so you can comprehend this --
--- powered by lots of chatgpt --
--- keep in mind I have very little lua knowledge --
+-- powered by lots of uhhm uhhhhh uhhhhhhhhh --
 
 -- Function to get message box function
 function GetMsgBoxFunc()
