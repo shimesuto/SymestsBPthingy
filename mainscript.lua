@@ -22,9 +22,9 @@ MsgBox("Patch notes:\nUhhhhh show Names randomly broke\nWARNING: ALWAYS HIT WILL
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Symest's Harmless BP1 Thing (every BP script ever + gatekept ones)",
-   LoadingTitle = "Symest's Harmless BP1 Thing",
-   LoadingSubtitle = "I got bored and bp1 is dead",
+   Name = "Symest Hub",
+   LoadingTitle = "Symest Hub (Free)",
+   LoadingSubtitle = "Making BP Accessible to Everyone",
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, 
@@ -32,7 +32,7 @@ local Window = Rayfield:CreateWindow({
    },
    Discord = {
       Enabled = true,
-      Invite = "2q3TdMkGUS", 
+      Invite = "JuEuNCmvqK", 
       RememberJoins = true
    },
    KeySystem = false,
@@ -54,28 +54,29 @@ local pointlight = light.PointLight
 Window.ModifyTheme("AmberGlow")
 
 local PvPFarmingTab = Window:CreateTab("PvP & Farming", nil)
-local PvPFarmingSection = PvPFarmingTab:CreateSection("Main")
+local PvPFarmingSection = PvPFarmingTab:CreateSection("Get more with Symest Hub Platinum")
 
 local CosmeticTradingTab = Window:CreateTab("Cosmetic & Trading", nil) -- Title, Image
-local CosmeticTradingSection = CosmeticTradingTab:CreateSection("Main")
+local CosmeticTradingSection = CosmeticTradingTab:CreateSection("Get even more OP scripts with Symest Hub Platinum")
 
 local MiscTab = Window:CreateTab("Miscellaneous", nil) -- Title, Image
-local MiscSection = MiscTab:CreateSection("Main")
+local MiscSection = MiscTab:CreateSection("Get game breaking scripts with Symest Hub Platinum")
 
 local SillyTab = Window:CreateTab("Silly & Trolling", nil) -- Title, Image
-local SillySection = SillyTab:CreateSection("Main")
 
+local SillySection = SillyTab:CreateSection("Purchase Symest Hub Platinum #ad #shamelessplug #gonnakms")
 
-local CustomScriptsTab = Window:CreateTab("Custom Skins", nil) -- Title, Image
-local CustomScriptsSection = CustomScriptsTab:CreateSection("Main")
+local CustomScriptsTab = Window:CreateTab("Skin Importation", nil) -- Title, Image
+
+local CustomScriptsSection = CustomScriptsTab:CreateSection("DO THIS FIRST")
 
 local OtherHubsTab = Window:CreateTab("Other Hubs & Such", nil) -- Title, Image
-local OtherHubsSection = OtherHubsTab:CreateSection("Main")
+local OtherHubsSection = OtherHubsTab:CreateSection("Recommended")
 
 
 Rayfield:Notify({
    Title = "if you don’t like cheaters play BP2",
-   Content = "made by Symest :3",
+   Content = "Join The Discord!!",
    Duration = 5,
    Image = 13047715178,
    Actions = { -- Notification Buttons
@@ -106,7 +107,7 @@ local Button = PvPFarmingTab:CreateButton({
 
 -- Create the button for the head and HumanoidRootPart script
 local Button = PvPFarmingTab:CreateButton({
-    Name = "Semi (hitbox expander @ 5)",
+    Name = "Semi/Hitbox Expander (recommended if you can aim alright)",
     Callback = function()
         _G.HeadSize = 3
         _G.Disabled = true
@@ -460,7 +461,7 @@ GetNightVision()
 
 debug.setconstant(ThrowKnifeFunc, 46, 1)
 
-MsgBox("Auto-Throw loaded! Throw animation not supported yet :3 (ripped from H4R7N, deobfuscated by Symest)")
+MsgBox("Auto-Throw loaded! :3 (ripped from H4R7N, deobfuscated by Symest)")
 while wait(0.5) do
     local ptr = GetSkid()
     if ptr ~= nil and lp.Character:FindFirstChild("Blade") then
@@ -859,3 +860,558 @@ game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
     end
 })
 
+local StellarChairButton = CosmeticTradingTab:CreateButton({
+    Name = "Equip Stellar VIP Chair (unequip current)",
+    Callback = function()
+        print("Equipping Stellar VIP Chair...")
+
+        local args = {
+            [1] = 55,
+            [2] = "Chair Skins",
+            [3] = "Space",
+            [4] = "Stellar"
+        }
+
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+    end,
+})
+
+local BlackProfileButton = CosmeticTradingTab:CreateButton({
+    Name = "Black Profile",
+    Callback = function()
+        local args = {
+    [1] = 62,
+    [2] = -1
+}
+
+game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+
+    end,
+})
+
+local ZoomLimitButton = MiscTab:CreateButton({
+    Name = "Disable Camera Zoom Limit",
+    Callback = function()
+        game.Loaded:Wait()
+game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = 4000
+    end,
+})
+
+local lst = {0x57, 0x41, 0x53, 0x44}
+-- 0x57 = W, 0x41 = A, 0x53 = S, 0x44 = D
+
+_G.on = false -- Shared state variable
+
+task.spawn(function()
+            while task.wait() do
+                if _G.on == true then
+                local key = lst[math.random(1, #lst)]
+
+                -- Jump action
+                keypress(0x20)  -- Space key
+                task.wait(0.1)
+                keyrelease(0x20)
+
+                -- Movement action
+                keypress(key)
+                task.wait(0.4)
+                keyrelease(key)
+
+                -- Cooldown
+                task.wait(0.5)
+                end
+            end
+            end)
+
+-- Create the Rayfield toggle
+local AutoMovementToggle = PvPFarmingTab:CreateToggle({
+    Name = "Auto Movement",
+    CurrentValue = false,
+    Flag = "AutoMovementToggle",
+    Callback = function(Value)
+        _G.on = Value
+    end,
+})
+
+local TradeBanCheckerooni = CosmeticTradingTab:CreateButton({
+    Name = "List Tradebanned Players (check console)",
+    Callback = function()
+        for _, player in pairs(game.Players:GetPlayers()) do
+    local tradebanned = player.tradebanned
+    if tradebanned then
+        if tradebanned.Value then
+            print(player.Name .. " is tradebanned! ")
+        end
+    end
+end
+    end,
+})
+
+local PenisButton = PvPFarmingTab:CreateButton({
+   Name = "Force All Players to Shoot in Secret",
+   Callback = function()
+       --SECRET
+       while true do
+           game:GetService("ReplicatedStorage").RemoteEvent:FireServer(16, "secret")
+           wait()
+       end
+   end,
+})
+
+local PenisButtonPtTwo = PvPFarmingTab:CreateButton({
+   Name = "Force All Players to Shoot in Public",
+   Callback = function()
+--PUBLIC
+while true do
+  game:GetService("ReplicatedStorage").RemoteEvent:FireServer(16, "public")
+  wait()
+  end
+   end,
+})
+
+local BreakingPlusHub = OtherHubsTab:CreateButton({
+   Name = "Breaking Plus (RECOMMENDED)",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Plus/main/Script"))()
+   end,
+})
+
+local PenispooSection = OtherHubsTab:CreateSection("Other")
+
+local H4R7NMENU = OtherHubsTab:CreateButton({
+   Name = "H4R7N",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/H4R7NHacks/Obfuscated/master/Breaking%20Point%20H4R7N%20Hack%20v1.2.lua"))()
+   end,
+})
+
+local BUSTERRRRRRRRRR = OtherHubsTab:CreateButton({
+   Name = "Buster",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ColdStep2/Breaking-Point-Funny-Squid-Hax/main/Breaking%20Point%20Funny%20Squid%20Hax",true))();
+   end,
+})
+
+-- BELOW HERE IS THE IMPORTING SHIT --
+
+
+-- THIS PART IS HUGE SO I GOTTA SEPERARE IT LMFAO --
+
+
+-- CREDITS TO NAIKO --
+
+
+
+local BreakingPlusHub = CustomScriptsTab:CreateButton({
+   Name = "(USE FIRST) Execute Breaking Plus",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Plus/main/Script"))()
+   end,
+})
+
+local JerkingMyShit = SillyTab:CreateButton({
+   Name = "Jerk Off",
+   Callback = function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-jerk-off-25958"))()
+   end,
+})
+
+
+
+-- WOO BIG SPACE WOAHHHH--
+
+
+
+
+-- importing begins here --
+
+
+local Section = CustomScriptsTab:CreateSection("Chairs")
+
+
+-- CHAIRS --
+
+
+local UhhhVibrant = CustomScriptsTab:CreateButton({
+   Name = "Vibrant",
+   Callback = function()
+-- Main Variables --
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local UI = LocalPlayer.PlayerGui.ScreenGui or LocalPlayer.PlayerGui:WaitForChild('ScreenGui')
+local SkinTypes = {Guns=1,Knifes=2,Chairs=3,Animations=4,Accessories=5,Effects=6}
+local Rarities = {Common=Color3.fromRGB(255, 255, 255),Uncommon=Color3.fromRGB(255, 245, 184),Rare=Color3.fromRGB(25, 255, 190),Legendary=Color3.fromRGB(255, 79, 82),Divine=Color3.fromRGB(255, 204, 0),Exotic=Color3.fromRGB(255, 129, 59)}
+local RarityOrder = {Exotic=-6,Divine = -5,Legendary = -4,Rare = -3,Uncommon = -2,Common = -1}
+
+-- Configuration --
+local SkinType = SkinTypes["Chairs"] -- Where it would be located in your inventory [Guns, Knifes, Chairs, Animations, Accessories, Effects]
+local SkinName = "Vibrant" -- Name of the skin
+local Rarity = "Divine" -- The rarity of the skin [Common, Uncommon, Rare, Legendary, Divine, Exotic]
+local SwapTheSkinLocally = true -- Determines if the skin will be swapped on your knife when you hold it or on your table
+
+-- Image data --
+local Images = {2504103174,2504103488,2504103711,2504103951,2504104149,2504104368,2504104625,2504104909,2504105243,2504105506,2504105747,2504105997,2504106266,2504106521,2504106737,2504106950,2504107256,2504107503,2504107783,2504108037,2504108322,2504108560,2504108825,2504109213}
+local Data = {2502794125,2502794215,2502794297,2502794415,2502794491,2502794579,2502794686,2502794766,2502794847,2502794981,2502795122,2502795216,2502795286,2502795408,2502795471,2502795554,2502795654,2502795745,2502795820,2502795888,2502795966,2502796058,2502796163,2502796235}
+
+-- Source code --
+if UI.inv.sectionframes:GetChildren()[SkinType]:FindFirstChild("GridOrder") then
+    if SwapTheSkinLocally == true then
+        task.spawn(function()
+        for i,v in Data do
+            game:GetService("ContentProvider"):PreloadAsync({"rbxassetid://"..v})
+        end
+        end)
+    end
+    if #Images == 1 then
+        table.insert(Images,Images[1])
+    end
+    if #Data == 1 then
+        table.insert(Data,Data[1])
+    end
+    local invbut = game.ReplicatedStorage.model.invbut:Clone()
+    local SkinWrap = false
+    local CurrentImage,CurrentImage2 = 1,1
+    local Connection
+    task.spawn(function()
+        while true do
+            wait()
+            if CurrentImage > #Images or CurrentImage == #Images then
+                CurrentImage = 0
+            end
+            if CurrentImage2 > #Data or CurrentImage2 == #Data then
+                CurrentImage2 = 0
+            end
+            CurrentImage += 1
+            CurrentImage2 += 1
+            invbut.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Images[CurrentImage]
+            if SkinWrap == true and SwapTheSkinLocally == true then
+                if SkinType == 1 then
+                    if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("display_gun") then
+                        LocalPlayer.Character:FindFirstChild("display_gun").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        if Connection == nil then
+                            Connection = LocalPlayer.Character:FindFirstChild("display_gun"):GetPropertyChangedSignal("TextureID"):Once(function()
+                                LocalPlayer.Character:FindFirstChild("display_gun").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end    
+                elseif SkinType == 2 then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("display_blade") and LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh") then
+                    LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                    if Connection == nil then
+                        Connection = LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                            LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                            Connection = nil
+                        end)
+                        task.spawn(function()
+                            wait()
+                            Connection = nil
+                        end)
+                    end
+                end
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Tool") and LocalPlayer.Character:FindFirstChildOfClass("Tool").Name == "Blade" and LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle") and LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh") then
+                    LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                    if Connection == nil then
+                        Connection = LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                            LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                            Connection = nil
+                        end)
+                        task.spawn(function()
+                            wait()
+                            Connection = nil
+                        end)
+                    end
+                end
+                elseif SkinType == 3 then
+                    if workspace:FindFirstChild("chairs") then
+                for i,v in workspace:FindFirstChild("chairs"):GetChildren() do
+                    if v:FindFirstChild("Value") and v.Value.Value == LocalPlayer.Name and v:FindFirstChild("MeshChair") and v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh") then
+                        v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").VertexColor = Vector3.new(1.65,1.65,1.65)
+                        if Connection == nil then
+                            Connection = v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                                v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end
+                    if v:FindFirstChild("Value") and v.Value.Value == LocalPlayer.Name and v:FindFirstChild("skinchair") then
+                        v:FindFirstChild("skinchair").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        if Connection == nil then
+                            Connection = v:FindFirstChild("skinchair"):GetPropertyChangedSignal("TextureID"):Once(function()
+                                v:FindFirstChild("skinchair").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end
+                end
+                end
+            end
+            end
+        end
+    end)
+    invbut.name.Text = SkinName
+    invbut.type.Text = Rarity
+    invbut.type.TextColor3 = Rarities[Rarity]
+    invbut.LayoutOrder = RarityOrder[Rarity]
+    if RarityOrder[Rarity] < -5 then
+        invbut.ZIndex = 2
+        invbut.type.ZIndex = 2
+        invbut.name.ZIndex = 2
+        invbut.BackgroundTransparency = 1
+        local ButtonRe = Instance.new("ImageButton")
+        ButtonRe.Size = UDim2.new(1,0,1,0)
+        ButtonRe.Position = UDim2.new(0.5,0,0.5,0)
+        ButtonRe.Image = "rbxassetid://1401978119"
+        ButtonRe.ImageColor3 = Rarities[Rarity]
+        ButtonRe.ImageTransparency = 0.525
+        ButtonRe.AnchorPoint = Vector2.new(0.5,0.5)
+        ButtonRe.BackgroundTransparency = 0.3
+        ButtonRe.BackgroundColor3 = Color3.fromRGB(40,40,40)
+        ButtonRe.ScaleType = Enum.ScaleType.Tile
+        ButtonRe.TileSize = UDim2.new(3.5,0,0.4,0)
+        ButtonRe.ZIndex = 1
+        ButtonRe.Parent = invbut
+        ButtonRe.BorderSizePixel = invbut.BorderSizePixel
+        ButtonRe.BorderColor3 = Color3.fromRGB(255, 237, 93)
+        invbut:GetPropertyChangedSignal("BorderSizePixel"):Connect(function()
+        ButtonRe.BorderSizePixel = invbut.BorderSizePixel
+        end)
+    end
+    invbut:GetPropertyChangedSignal("BorderSizePixel"):Connect(function()
+        if invbut.BorderSizePixel == 0 then
+            SkinWrap = false
+        end
+    end)
+    invbut.Parent = UI.inv.sectionframes:GetChildren()[SkinType]
+    invbut.MouseButton1Down:Connect(function()
+        if invbut.BorderSizePixel == 0 then
+            invbut.BorderSizePixel = 2
+            SkinWrap = true
+        for i,v in pairs(UI.inv.sectionframes:GetChildren()[SkinType].GridOrder:GetChildren()) do
+            if v ~= invbut and v:IsA("ImageButton") then
+                v.BorderSizePixel = 0
+            end
+        end
+            else
+                invbut.BorderSizePixel = 0
+            end
+            end)
+        else
+            error("Could not find grid order. Did you forget to run breaking plus?")
+        end
+   end,
+})
+
+local UhhhAquarious = CustomScriptsTab:CreateButton({
+   Name = "Aquarious",
+   Callback = function()
+-- Main Variables --
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local UI = LocalPlayer.PlayerGui.ScreenGui or LocalPlayer.PlayerGui:WaitForChild('ScreenGui')
+local SkinTypes = {Guns=1,Knifes=2,Chairs=3,Animations=4,Accessories=5,Effects=6}
+local Rarities = {Common=Color3.fromRGB(255, 255, 255),Uncommon=Color3.fromRGB(255, 245, 184),Rare=Color3.fromRGB(25, 255, 190),Legendary=Color3.fromRGB(255, 79, 82),Divine=Color3.fromRGB(255, 204, 0),Exotic=Color3.fromRGB(255, 129, 59)}
+local RarityOrder = {Exotic=-6,Divine = -5,Legendary = -4,Rare = -3,Uncommon = -2,Common = -1}
+
+-- Configuration --
+local SkinType = SkinTypes["Chairs"] -- Where it would be located in your inventory [Guns, Knifes, Chairs, Animations, Accessories, Effects]
+local SkinName = "Aquarious" -- Name of the skin
+local Rarity = "Divine" -- The rarity of the skin [Common, Uncommon, Rare, Legendary, Divine, Exotic]
+local SwapTheSkinLocally = true -- Determines if the skin will be swapped on your knife when you hold it or on your table
+
+-- Image data --
+local Images = {11459893942,11459895513,11459896420,11459897482,11459898257,11459899259,11459900343,11459901218,11459902016,11459903095,11459903754,11459904552,11459905406,11459906104,11459906844,11459908448,11459947166,11459941710,11459936675,11459937925,11459938788,11459939299,11459940301}
+local Data = {11459787625,11459789393,11459790351,11459791725,11459793278,11459794774,11459796060,11459797110,11459798072,11459799520,11459802442,11459803467,11459805235,11459808843,11459824535,11459825692,11459826818,11459827829,11459828841,11459829916,11459831049,11459831928,11459832793,11459833750}
+
+-- Source code --
+if UI.inv.sectionframes:GetChildren()[SkinType]:FindFirstChild("GridOrder") then
+    if SwapTheSkinLocally == true then
+        task.spawn(function()
+        for i,v in Data do
+            game:GetService("ContentProvider"):PreloadAsync({"rbxassetid://"..v})
+        end
+        end)
+    end
+    if #Images == 1 then
+        table.insert(Images,Images[1])
+    end
+    if #Data == 1 then
+        table.insert(Data,Data[1])
+    end
+    local invbut = game.ReplicatedStorage.model.invbut:Clone()
+    local SkinWrap = false
+    local CurrentImage,CurrentImage2 = 1,1
+    local Connection
+    task.spawn(function()
+        while true do
+            wait()
+            if CurrentImage > #Images or CurrentImage == #Images then
+                CurrentImage = 0
+            end
+            if CurrentImage2 > #Data or CurrentImage2 == #Data then
+                CurrentImage2 = 0
+            end
+            CurrentImage += 1
+            CurrentImage2 += 1
+            invbut.Image = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Images[CurrentImage]
+            if SkinWrap == true and SwapTheSkinLocally == true then
+                if SkinType == 1 then
+                    if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("display_gun") then
+                        LocalPlayer.Character:FindFirstChild("display_gun").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        if Connection == nil then
+                            Connection = LocalPlayer.Character:FindFirstChild("display_gun"):GetPropertyChangedSignal("TextureID"):Once(function()
+                                LocalPlayer.Character:FindFirstChild("display_gun").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end    
+                elseif SkinType == 2 then
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChild("display_blade") and LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh") then
+                    LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                    if Connection == nil then
+                        Connection = LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                            LocalPlayer.Character:FindFirstChild("display_blade"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                            Connection = nil
+                        end)
+                        task.spawn(function()
+                            wait()
+                            Connection = nil
+                        end)
+                    end
+                end
+                if LocalPlayer.Character ~= nil and LocalPlayer.Character:FindFirstChildOfClass("Tool") and LocalPlayer.Character:FindFirstChildOfClass("Tool").Name == "Blade" and LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle") and LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh") then
+                    LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                    if Connection == nil then
+                        Connection = LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                            LocalPlayer.Character:FindFirstChildOfClass("Tool"):FindFirstChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                            Connection = nil
+                        end)
+                        task.spawn(function()
+                            wait()
+                            Connection = nil
+                        end)
+                    end
+                end
+                elseif SkinType == 3 then
+                    if workspace:FindFirstChild("chairs") then
+                for i,v in workspace:FindFirstChild("chairs"):GetChildren() do
+                    if v:FindFirstChild("Value") and v.Value.Value == LocalPlayer.Name and v:FindFirstChild("MeshChair") and v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh") then
+                        v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").VertexColor = Vector3.new(1.65,1.65,1.65)
+                        if Connection == nil then
+                            Connection = v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh"):GetPropertyChangedSignal("TextureId"):Once(function()
+                                v:FindFirstChild("MeshChair"):FindFirstChildOfClass("SpecialMesh").TextureId = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end
+                    if v:FindFirstChild("Value") and v.Value.Value == LocalPlayer.Name and v:FindFirstChild("skinchair") then
+                        v:FindFirstChild("skinchair").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                        if Connection == nil then
+                            Connection = v:FindFirstChild("skinchair"):GetPropertyChangedSignal("TextureID"):Once(function()
+                                v:FindFirstChild("skinchair").TextureID = "https://www.roblox.com/Thumbs/Asset.ashx?width=100&height=100&assetId=" .. Data[CurrentImage2]
+                                Connection = nil
+                            end)
+                            task.spawn(function()
+                                wait()
+                                Connection = nil
+                            end)
+                        end
+                    end
+                end
+                end
+            end
+            end
+        end
+    end)
+    invbut.name.Text = SkinName
+    invbut.type.Text = Rarity
+    invbut.type.TextColor3 = Rarities[Rarity]
+    invbut.LayoutOrder = RarityOrder[Rarity]
+    if RarityOrder[Rarity] < -5 then
+        invbut.ZIndex = 2
+        invbut.type.ZIndex = 2
+        invbut.name.ZIndex = 2
+        invbut.BackgroundTransparency = 1
+        local ButtonRe = Instance.new("ImageButton")
+        ButtonRe.Size = UDim2.new(1,0,1,0)
+        ButtonRe.Position = UDim2.new(0.5,0,0.5,0)
+        ButtonRe.Image = "rbxassetid://1401978119"
+        ButtonRe.ImageColor3 = Rarities[Rarity]
+        ButtonRe.ImageTransparency = 0.525
+        ButtonRe.AnchorPoint = Vector2.new(0.5,0.5)
+        ButtonRe.BackgroundTransparency = 0.3
+        ButtonRe.BackgroundColor3 = Color3.fromRGB(40,40,40)
+        ButtonRe.ScaleType = Enum.ScaleType.Tile
+        ButtonRe.TileSize = UDim2.new(3.5,0,0.4,0)
+        ButtonRe.ZIndex = 1
+        ButtonRe.Parent = invbut
+        ButtonRe.BorderSizePixel = invbut.BorderSizePixel
+        ButtonRe.BorderColor3 = Color3.fromRGB(255, 237, 93)
+        invbut:GetPropertyChangedSignal("BorderSizePixel"):Connect(function()
+        ButtonRe.BorderSizePixel = invbut.BorderSizePixel
+        end)
+    end
+    invbut:GetPropertyChangedSignal("BorderSizePixel"):Connect(function()
+        if invbut.BorderSizePixel == 0 then
+            SkinWrap = false
+        end
+    end)
+    invbut.Parent = UI.inv.sectionframes:GetChildren()[SkinType]
+    invbut.MouseButton1Down:Connect(function()
+        if invbut.BorderSizePixel == 0 then
+            invbut.BorderSizePixel = 2
+            SkinWrap = true
+        for i,v in pairs(UI.inv.sectionframes:GetChildren()[SkinType].GridOrder:GetChildren()) do
+            if v ~= invbut and v:IsA("ImageButton") then
+                v.BorderSizePixel = 0
+            end
+        end
+            else
+                invbut.BorderSizePixel = 0
+            end
+            end)
+        else
+            error("Could not find grid order. Did you forget to run breaking plus?")
+        end
+   end,
+})
+
+
+
+
+
+
+
+-- KNIVES HERE --
+
+
+
+local Section = CustomScriptsTab:CreateSection("MORE COMING SOON (this is really buggy)")
+
+
+
+-- WOAHH KNIVES -- 
