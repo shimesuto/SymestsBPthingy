@@ -23,7 +23,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "Symest Hub",
    LoadingTitle = "Symest Hub (Free)",
-   LoadingSubtitle = "Making BP Accessible to Everyone",
+   LoadingSubtitle = "Making BP Accessible to All",
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, 
@@ -74,7 +74,7 @@ local OtherHubsSection = OtherHubsTab:CreateSection("Recommended")
 
 
 Rayfield:Notify({
-   Title = "if you don’t like cheaters play BP2",
+   Title = "Making BP Accessible",
    Content = "Join The Discord!!",
    Duration = 5,
    Image = 13047715178,
