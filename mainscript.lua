@@ -1,8 +1,7 @@
 
 -- Symest's script thing uh yeah --
 -- with cool comments so you can comprehend this --
--- powered by lots of chatgpt --
--- keep in mind I have very little lua knowledge --
+-- powered by lots of um uhhh uhmmm uhhhhhhhh --
 
 -- Function to get message box function
 function GetMsgBoxFunc()
@@ -24,7 +23,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "Symest Hub",
    LoadingTitle = "Symest Hub (Free)",
-   LoadingSubtitle = "Making BP Accessible to Everyone",
+   LoadingSubtitle = "Making BP Accessible to All",
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, 
@@ -75,9 +74,9 @@ local OtherHubsSection = OtherHubsTab:CreateSection("Recommended")
 
 
 Rayfield:Notify({
-   Title = "if you don’t like cheaters play BP2",
+   Title = "Symest Hub Loaded",
    Content = "Join The Discord!!",
-   Duration = 5,
+   Duration = 3,
    Image = 13047715178,
    Actions = { -- Notification Buttons
       Ignore = {
@@ -1250,5 +1249,75 @@ local erm28 = CustomScriptsTab:CreateButton({
    Name = "Wivey",
    Callback = function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/PortedItems/Knifes/Wivey.lua"))()
+   end,
+})
+
+
+
+
+
+
+
+
+
+
+
+
+-- guns begin here --
+
+
+local Section = CustomScriptsTab:CreateSection("Guns")
+
+
+-- oooo guns --
+
+
+local ehm1 = CustomScriptsTab:CreateButton({
+   Name = "Peak",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Peak.lua"))()
+   end,
+})
+
+
+local ehm2 = CustomScriptsTab:CreateButton({
+   Name = "Retro",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Retro.lua"))()
+   end,
+})
+
+local ehm3 = CustomScriptsTab:CreateButton({
+   Name = "Ruby",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Ruby.lua"))()
+   end,
+})
+
+local ehm4 = CustomScriptsTab:CreateButton({
+   Name = "Skyline",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Skyline.lua"))()
+   end,
+})
+
+local erm5 = CustomScriptsTab:CreateButton({
+   Name = "Webs",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Webs.lua"))()
+   end,
+})
+
+local erm6 = CustomScriptsTab:CreateButton({
+   Name = "Zebra",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/BreakingPointItems/Guns/Zebra.lua"))()
+   end,
+})
+
+local erm7 = CustomScriptsTab:CreateButton({
+   Name = "Flare",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-Point-Porting/refs/heads/main/PortedItems/Guns/Flare.lua"))()
    end,
 })
