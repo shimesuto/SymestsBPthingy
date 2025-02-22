@@ -170,6 +170,13 @@ local Button = MiscTab:CreateButton({
 })
 
 -- Create the button for instant respawn
+local killDatHoe = MiscTab:CreateButton({
+    Name = "KILL UI",
+    Callback = function()
+        Rayfield:Destroy()
+    end,
+})
+
 local Button = MiscTab:CreateButton({
     Name = "Easy Instant Respawn",
     Callback = function()
