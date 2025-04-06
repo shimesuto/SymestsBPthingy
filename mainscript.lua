@@ -1008,6 +1008,23 @@ loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-jerk-off-25
 })
 
 
+local EndOfTheWorld = SillyTab:CreateButton({
+   Name = "Spam Team Invites (works in all servers)",
+   Callback = function()
+while wait() do
+   game:GetService("ReplicatedStorage").RemoteEvent:FireServer(16, "public")
+   wait()
+   for i,v in pairs(game.Players:GetPlayers()) do
+       if v.Name == game.Players.LocalPlayer.Name then
+           else
+           game:GetService("ReplicatedStorage").RemoteEvent:FireServer(39, v)
+       end
+   end
+end
+   end,
+})
+
+
 
 -- WOO BIG SPACE WOAHHHH--
 
