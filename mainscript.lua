@@ -1056,6 +1056,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NaikoScript/Breaking-
    end,
 })
 
+local FuchsiaXHub = OtherHubsTab:CreateButton({
+   Name = "Fuchsia X (RECOMMENDED)",
+   Callback = function()
+loadstring(game:HttpGet("https://fuchsiax.latealways.dev/script"))()
+   end,
+})
+
 local PenispooSection = OtherHubsTab:CreateSection("Other")
 
 local H4R7NMENU = OtherHubsTab:CreateButton({
