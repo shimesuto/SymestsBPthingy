@@ -29,6 +29,9 @@ local Window = Rayfield:CreateWindow({
       FolderName = nil, 
       FileName = "Piss Hub"
    },
+   
+   DisableRayfieldPrompts = true,
+   
    Discord = {
       Enabled = true,
       Invite = "JuEuNCmvqK", 
@@ -75,7 +78,7 @@ local OtherHubsSection = OtherHubsTab:CreateSection("Recommended")
 
 Rayfield:Notify({
    Title = "Symest Hub Loaded",
-   Content = "Join The Discord!!",
+   Content = "Powered by Rayfield UI!!",
    Duration = 3,
    Image = 13047715178,
    Actions = { -- Notification Buttons
@@ -167,6 +170,93 @@ local Button = MiscTab:CreateButton({
         Lighting.ShadowSoftness = 0
         Lighting.GlobalShadows = false
     end,
+})
+
+local ArcadeWinna = MiscTab:CreateButton({
+   Name = "Auto-Win Arcade Game",
+   Callback = function()
+ local arcade = workspace.arcade
+ if not arcade then return end
+ 
+ if not arcade.screen.SurfaceGui.label.Text == "PRESS RED TO START        (10 CREDITS)" then
+       Rayfield:Notify({
+   Title = "Oopsies..",
+   Content = "The Arcade Machine is already in use!",
+   Duration = 3,
+   Image = 13047715178,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+       return
+ end
+
+ local credits,success
+ repeat
+       credits, success = game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer(36) -- credits
+       if success then
+	  break
+       end
+       task.wait(5)
+ until success
+
+ if credits < 10 then
+       Rayfield:Notify({
+   Title = "Too Broke!",
+   Content = "You need at least 10 Credits!",
+   Duration = 3,
+   Image = 13047715178,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+       return
+ end
+ 
+ local redbutton = arcade.button1
+ local purplebutton = arcade.button2
+
+ -- Try to start the game
+ fireclickdetector(redbutton.ClickDetector, 1)
+ task.wait(0.3)
+ if arcade.screen.SurfaceGui.label.Text == "TRY AGAIN LATER" then
+       Rayfield:Notify({
+   Title = "Oopsies..",
+   Content = "The Arcade Machine is on Cooldown!",
+   Duration = 3,
+   Image = 13047715178,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+ end
+
+ task.wait(1)
+
+ fireclickdetector(purplebutton.ClickDetector, 1)
+ local xPositionToWin = arcade.screen.SurfaceGui.stacker:WaitForChild("stacked").Position.X
+
+ while true do task.wait(1)
+ repeat task.wait() until arcade.screen.SurfaceGui.stacker.box.Position.X == xPositionToWin
+ fireclickdetector(purplebutton.ClickDetector, 1)
+ end
+end,
+
 })
 
 -- Create the button for instant respawn
@@ -914,7 +1004,6 @@ task.spawn(function()
             end
             end)
 
--- Create the Rayfield toggle
 local AutoMovementToggle = PvPFarmingTab:CreateToggle({
     Name = "Auto Movement",
     CurrentValue = false,
@@ -1023,6 +1112,15 @@ while wait() do
 end
    end,
 })
+
+
+
+
+
+
+
+
+
 
 
 
